@@ -1,0 +1,10 @@
+local apps = '/opt/apps'
+local version = myModuleVersion()
+local pkgName = myModuleName()
+local pkg     = pathJoin(apps,pkgName,version)
+setenv("R_HOME",pkg)
+local pkgbin     = pathJoin(pkg,'bin')
+prepend_path("PATH", pkgbin)
+local pkglib     = pathJoin(pkg,'lib/R/lib')
+prepend_path("LD_LIBRARY_PATH", pkglib)
+prepend_path("MANPATH", pathJoin(pkg, "share/man"))
